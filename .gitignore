@@ -41,3 +41,6 @@ yarn-debug.log*
 
 #rubymine
 .idea
+
+#coverage
+coverage
