@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      blog: ブログ
+    attributes:
+      user:
+        username: ユーザー名
+        email: メールアドレス
+        age: 年齢
+        password: パスワード
+        password_confirmation: パスワード確認
+      blog:
+        title: タイトル
+        content: 本文
+        created_at: 作成日
+        updated_at: 編集日
