@@ -4,15 +4,15 @@ RSpec.describe "User", type: :system do
   describe 'ユーザー登録' do
     context '入力情報が正しい場合' do
       it "ユーザー登録ができること" do
-        visit new_user_path
+        visit '/users/new'
         fill_in 'ユーザー名', with: 'tetete'
         fill_in 'メールアドレス', with: 'tetete@example.com'
         fill_in '年齢', with: 23
         fill_in 'パスワード', with: 'password'
         fill_in 'パスワード確認', with: 'password'
-        click_button '登録'
-        expect(current_path).to eq login_path
-        expect(page).to have_content('ユーザーを登録しました')
+        click_on '登録'
+        expect(current_path).to eq '/login'
+        expect(page).to have_content('登録に成功しました')
       end
     end
 
@@ -24,12 +24,12 @@ RSpec.describe "User", type: :system do
         fill_in '年齢', with: ''
         fill_in 'パスワード', with: ''
         fill_in 'パスワード確認', with: ''
-        click_button '登録'
+        click_on '登録'
         expect(page).to have_content('ユーザー名を入力してください')
         expect(page).to have_content('メールアドレスを入力してください')
         expect(page).to have_content('パスワードは3文字以上で入力してください')
         expect(page).to have_content('パスワード確認を入力してください')
-        expect(page).to have_content('ユーザーの作成に失敗しました')
+        expect(page).to have_content('登録に失敗しました')
       end
     end
   end
