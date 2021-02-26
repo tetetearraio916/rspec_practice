@@ -7,8 +7,8 @@ RSpec.describe "Sessions", type: :system do
     context '認証情報が正しい場合' do
       it 'ログインできること' do
         visit login_path
-        fill_in 'メールアドレス', with: user.email
-        fill_in 'パスワード', with: 'password'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: 'password'
         click_button 'ログイン'
         expect(current_path).to eq root_path
         expect(page).to have_content 'ログインしました'
@@ -18,8 +18,8 @@ RSpec.describe "Sessions", type: :system do
     context '認証情報に誤りがある場合' do
       it 'ログインできないこと' do
         visit login_path
-        fill_in 'メールアドレス', with: user.email
-        fill_in 'パスワード', with: 'tetete'
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: 'tetete'
         click_button 'ログイン'
         expect(current_path).to eq login_path
         expect(page).to have_content 'ログインに失敗しました'
@@ -32,7 +32,7 @@ RSpec.describe "Sessions", type: :system do
       login
     end
     it 'ログアウトできること' do
-      click_button 'ログアウト'
+      click_on 'LOGOUT'
       expect(current_path).to eq login_path
       expect(page).to have_content 'ログアウトしました'
     end
