@@ -1,9 +1,11 @@
 .w-full.md_w-1-of-2.flex.flex-col
   .flex.justify-center.md_justify-start.pt-12.md_pl-12.md_-mb-12
-    = link_to 'Logo', '#', class: 'bg-black text-white font-bold text-xl p-4'
+    = link_to 'RspecPractice', '#', class: 'bg-black text-white font-bold text-xl p-4'
   .flex.flex-col.justify-center.md_justify-start.my-auto.pt-8.md_pt-0.px-8.md_px-24.lg_px-32
     p.text-center.text-3xl.font-black
-      | お前もユーザー登録してみないか？
+      | Join Us.
+      br
+      | Would you like to join us?
       = form_with model: @user, class: 'flex flex-col pt-3 md_pt-8' do |f|
         .flex.flex-col.pt-4
           = f.label :username, class: 'text-lg font-black'
@@ -21,6 +23,6 @@
       .text-center.pt-12.pb-12
         p
           | Already have an account?
-        = link_to 'Log in here.', '#', class: 'underline font-semibold'
+        = link_to 'Log in here.', login_path, class: 'underline font-semibold'
 .w-1-of-2.shadow-2xl
-  = image_tag '/akaza.jpeg', class: 'object-cover w-full h-screen hidden md_block', size: '30×30'
+  = image_tag '/demo5.jpeg', class: 'object-cover w-full h-screen hidden md_block', size: '30×30'
