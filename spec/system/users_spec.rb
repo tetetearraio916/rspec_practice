@@ -27,8 +27,7 @@ RSpec.describe "User", type: :system do
         click_on '登録'
         expect(page).to have_content('ユーザー名を入力してください')
         expect(page).to have_content('メールアドレスを入力してください')
-        expect(page).to have_content('パスワードは3文字以上で入力してください')
-        expect(page).to have_content('パスワード確認を入力してください')
+        expect(page).to have_content('パスワードを入力してください')
         expect(page).to have_content('登録に失敗しました')
       end
     end
