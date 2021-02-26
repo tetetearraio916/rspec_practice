@@ -3,10 +3,14 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        "1-of-2": "50%"
+      }
+    },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: []
 }
