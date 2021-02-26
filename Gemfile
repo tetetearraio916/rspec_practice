@@ -70,3 +70,5 @@ gem 'rails-i18n'
 #slim
 gem 'slim-rails'
 gem 'html2slim'
+# 列挙
+gem 'enumerize'
