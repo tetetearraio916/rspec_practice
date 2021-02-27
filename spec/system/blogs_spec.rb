@@ -3,21 +3,34 @@ require 'rails_helper'
 RSpec.describe "Blogs", type: :system do
   let!(:user){ create(:user)}
   let!(:my_blog){create(:blog, user: user)}
+  let!(:my_unpublished_blog){ create(:blog, :unpublished, user: user)}
+  let!(:unpublished_blog){ create(:blog, :unpublished)}
+
+
 
   describe 'ブログ一覧' do
     context 'フラグが公開であれば' do
-      it "ブログが存在すること" do
-
+      it "自分のブログが存在すること" do
+        login_as(user)
+        visit '/'
+        expect(page).to have_content(my_blog.content)
       end
     end
 
     context 'フラグが未公開であれば' do
-      it "他のユーザーのブログ一覧に存在しないこと" do
-
+      before do
+        login_as(user)
+      end
+      it "ブログ一覧に他のユーザーの未公開フラグのブログが存在しないこと" do
+        visit '/'
+        expect(page).to have_content(my_blog.content)
+        expect(page).to_not have_content(unpublished_blog.content)
       end
 
-      it '自分のブログ一覧に存在すること' do
-
+      it '自分のブログが一覧に存在すること' do
+        visit '/'
+        expect(page).to have_content(my_unpublished_blog.content)
+        expect(page).to have_content(my_blog.content)
       end
     end
 

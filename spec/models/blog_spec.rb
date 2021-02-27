@@ -31,18 +31,6 @@ RSpec.describe Blog, type: :model do
       expect(blog.errors[:content]).to include('は100文字以内で入力してください')
     end
 
-    it '公開フラグが存在しなければ無効であること' do
-      blog = build(:blog, read: nil)
-      blog.valid?
-      expect(blog.errors[:read]).to include('は数値で入力してください')
-    end
-
-    it '公開フラグが公開未公開で設定された数字以外が存在すれば無効であること' do
-      blog = build(:blog, read: 3)
-      blog.valid?
-      expect(blog.errors[:read]).to include("は一覧にありません", "は1以下の値にしてください")
-    end
-
   end
 
 end

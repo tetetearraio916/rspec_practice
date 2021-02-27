@@ -3,9 +3,10 @@ class Blog < ApplicationRecord
 
   validates :title, presence: true, length: {maximum: 20}
   validates :content, presence: true, length: {maximum: 100}
-  validates :read, presence: true, numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 1}
 
-  enumerize :read, in: {published: 0, unpublished: 1 }
+
+  enumerize :read, in: { published: 0, unpublished: 1 }, default: 0, scope: true
 
   belongs_to :user
+
 end

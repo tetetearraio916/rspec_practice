@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :blog do
-    title { Faker::Dessert.variety }
+    title { Faker::Name.name }
     content { Faker::Dessert.topping }
     read { :published }
     user

@@ -1,0 +1,22 @@
+section.flex.flex-row.flex-wrap.mx-auto
+  .transition-all.duration-150.flex.w-full.px-4.py-6.md_w-1-of-2.lg_w-1-of-3
+    .flex.flex-col.items-stretch.min-h-full.pb-4.mb-6.transition-all.duration-150.bg-white.rounded-lg.shadow-lg.hover_shadow-2xl
+      .md_flex-shrink-0
+      hr.border-gray-300
+          = link_to blog_path(blog), class: "hover:underline" do
+            .flex.flex-wrap.items-center.flex-1.px-4.py-1.text-center.mx-auto
+              h2.text-2xl.font-bold.tracking-normal.text-gray-800
+                = blog.title
+      hr.border-gray-300
+        p.flex.flex-row.flex-wrap.w-full.px-4.py-2.overflow-hidden.text-sm.text-justify.text-gray-700
+          = blog.content[0,20]
+      hr.border-gray-300
+        section.px-4.py-2.mt-2
+          .flex.items-center.justify-between
+            .flex.flex-col.mx-2
+              = link_to '#', class: "font-semibold text-gray-700 hover:underline" do
+                = blog.user.username
+                span.mx-1.text-xs.text-gray-600
+                  = blog.user&.age
+          p.mt-1.text-xs.text-gray-600
+            = l blog.created_at, format: :short
