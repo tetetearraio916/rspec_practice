@@ -6,14 +6,6 @@
       | Let's post
       br
       | Have a nice day !
-      = form_with model: @blog, class: 'flex flex-col pt-3 md_pt-8' do |f|
-        = render 'shared/error_messages', object: @blog
-        .flex.flex-col.pt-4
-          = f.label :title, class: 'text-lg font-black'
-          = f.text_field :title, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus_outline-none focus_shadow-outline', placeholder: '最近の出来事など'
-        .flex.flex-col.pt-4
-          = f.label :content, class: 'text-lg font-black'
-          = f.text_area :content, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus_outline-none focus_shadow-outline', placeholder: '本文'
-        = f.submit '投稿', class: 'bg-black text-white font-bold text-lg hover_bg-gray-700 p-2 mt-8'
+      = render 'form', blog: @blog
 .w-1-of-2.shadow-2xl
   = image_tag '/blog3.jpeg', class: 'object-cover w-full h-screen hidden md_block', size: '30×30'
