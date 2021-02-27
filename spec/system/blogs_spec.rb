@@ -93,7 +93,9 @@ RSpec.describe "Blogs", type: :system do
 
   describe 'ブログ詳細' do
     it "ブログの詳細画面が閲覧できる" do
-
+      login_as(user)
+      visit "/blogs/#{my_blog.id}"
+      expect(current_path).to eq "/blogs/#{my_blog.id}"
     end
 
   end
