@@ -22,6 +22,17 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    @blog = current_user.blogs.find(params[:id])
+  end
+
+  def  update
+    @blog = current_user.blogs.find(params[:id])
+    if @blog.update(blog_params)
+      redirect_to root_path,success: "投稿を更新しました"
+    else
+      flash.now[:danger] = '更新に失敗しました'
+      render :edit
+    end
   end
 
   private

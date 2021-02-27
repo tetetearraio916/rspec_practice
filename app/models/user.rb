@@ -11,4 +11,8 @@ class User < ApplicationRecord
   def feed
     Blog.with_read(:published).or(Blog.where(user: id)).preload(:user).order(created_at: :desc)
   end
+
+  def own?(object)
+    self.id == object.user_id
+  end
 end

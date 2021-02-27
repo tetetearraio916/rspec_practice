@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Blogs", type: :system do
   let!(:user){ create(:user)}
   let!(:my_blog){create(:blog, user: user)}
+  let!(:other_blog){create(:blog)}
   let!(:my_unpublished_blog){ create(:blog, :unpublished, user: user)}
   let!(:unpublished_blog){ create(:blog, :unpublished)}
 
@@ -63,16 +64,39 @@ RSpec.describe "Blogs", type: :system do
   end
 
   describe 'ブログ更新' do
+    before do
+      login_as(user)
+    end
     it "自分のブログに編集ボタンが表示されること" do
-
+      visit '/'
+      within "#blog-#{my_blog.id}" do
+        expect(page).to have_css '.edit-button'
+      end
     end
 
     it "他人のブログに編集ボタンが表示されないこと" do
-
+      visit '/'
+      within "#blog-#{other_blog.id}" do
+        expect(page).to_not have_css '.edit-button'
+      end
     end
 
     it "ブログの更新ができること" do
+      visit "/blogs/#{my_blog.id}/edit"
+      fill_in 'タイトル', with: 'update'
+      fill_in '本文', with: 'update'
+      click_on '投稿'
+      expect(current_path).to eq '/'
+      expect(page).to have_content('投稿を更新しました')
+    end
 
+    it "ブログの更新ができないこと" do
+      visit "/blogs/#{my_blog.id}/edit"
+      fill_in 'タイトル', with: ''
+      fill_in '本文', with: ''
+      click_on '投稿'
+      expect(current_path).to eq "/blogs/#{my_blog.id}"
+      expect(page).to have_content('更新に失敗しました')
     end
   end
 
