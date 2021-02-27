@@ -35,6 +35,12 @@ class BlogsController < ApplicationController
     end
   end
 
+  def destroy
+    @blog = current_user.blogs.find(params[:id])
+    @blog.destroy!
+    redirect_to root_path, success: '投稿を削除しました'
+  end
+
   private
 
   def blog_params

@@ -101,16 +101,31 @@ RSpec.describe "Blogs", type: :system do
   end
 
   describe 'ブログ削除' do
-    it "自分のブログに削除ボタンが表示されること" do
+    before do
+      login_as(user)
+    end
 
+    it "自分のブログに削除ボタンが表示されること" do
+      visit '/'
+      within "#blog-#{my_blog.id}" do
+        expect(page).to have_css '.delete-button'
+      end
     end
 
     it "他人のブログに削除ボタンが表示されないこと" do
-
+      visit '/'
+      within "#blog-#{other_blog.id}" do
+        expect(page).to_not have_css '.delete-button'
+      end
     end
 
     it "ブログの削除ができること" do
-
+      visit '/'
+      within "#blog-#{my_blog.id}" do
+        page.accept_confirm { find('.delete-button').click }
+      end
+      expect(page).to have_content '投稿を削除しました'
+      expect(page).not_to have_content my_blog.content
     end
 
   end
