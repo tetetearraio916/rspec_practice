@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :system do
+RSpec.describe 'Sessions', type: :system do
   let(:user) { create(:user) }
 
   describe 'ログイン' do
@@ -37,5 +37,4 @@ RSpec.describe "Sessions", type: :system do
       expect(page).to have_content 'ログアウトしました'
     end
   end
-
 end

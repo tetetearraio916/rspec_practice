@@ -10,14 +10,12 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to login_path, success: '登録に成功しました'
     else
-      flash.now[:dander] = "登録に失敗しました"
+      flash.now[:dander] = '登録に失敗しました'
       render :new
     end
   end
 
-  def show
-
-  end
+  def show; end
 
   private
 
@@ -25,4 +23,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :age, :email, :password, :password_confirmation)
   end
 end
-
