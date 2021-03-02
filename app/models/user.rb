@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  has_many :blogs
+  has_many :blogs, dependent: :destroy
 
   def feed
     Blog.with_read(:published).or(Blog.where(user: id)).preload(:user).order(created_at: :desc)
