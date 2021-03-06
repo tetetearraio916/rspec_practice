@@ -1,0 +1,17 @@
+.max-w-screen-lg.mx-auto
+  .mt-12
+    .flex.flex-wrap.md_flex-no-wrap.space-x-0.md_space-x-6.mb-16
+      .mb-4.lg_mb-0.p-4.lg_p-0.w-full.md_w-4-of-7.relative.rounded.block
+        = image_tag '/blog2.jpeg', class: "rounded-md object-cover w-full h-64"
+        span.text-green-700.text-sm.hidden.md_block.mt-4
+          = l @blog.created_at, format: :short
+        h1.text-gray-800.text-4xl.font-bold.mt-2.mb-2.leading-tight
+          = @blog.title
+        p.text-gray-600.mb-4
+          = @blog.content
+      - if current_user.own?(@blog)
+        section
+          = link_to '編集', edit_blog_path(@blog), class: "focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
+        section
+          = link_to '削除', blog_path(@blog), method: :delete, data: { confirm: "本当に削除しますか？どうなっても知りませんよ" }, class: "focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-500 hover:bg-red-600 hover:shadow-lg"
+
