@@ -7,6 +7,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "autoprefixer": "^7",
+    "jquery": "^3.6.0",
     "postcss": "^7",
     "postcss-flexbugs-fixes": "^4",
     "postcss-preset-env": "^6.7.0",
