@@ -72,3 +72,4 @@ gem 'html2slim'
 gem 'slim-rails'
 # 列挙
 gem 'enumerize'
+
