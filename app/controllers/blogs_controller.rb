@@ -41,6 +41,19 @@ class BlogsController < ApplicationController
     redirect_to root_path, success: '投稿を削除しました'
   end
 
+  def published
+    @blog = current_user.blogs.find(params[:id])
+    @blog.read = :published
+    @blog.save!
+  end
+
+  def unpublished
+    @blog = current_user.blogs.find(params[:id])
+    @blog.read = :unpublished
+    @blog.save!
+  end
+
+
   private
 
   def blog_params

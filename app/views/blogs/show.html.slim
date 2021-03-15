@@ -14,4 +14,8 @@
           = link_to '編集', edit_blog_path(@blog), class: "focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-green-500 hover:bg-green-600 hover:shadow-lg"
         section
           = link_to '削除', blog_path(@blog), method: :delete, data: { confirm: "本当に削除しますか？どうなっても知りませんよ" }, class: "focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-500 hover:bg-red-600 hover:shadow-lg"
+        section
+          = render 'read_area', blog: @blog
+
+
 

@@ -1,0 +1,5 @@
+div id = "read_area-#{blog.id}"
+  - if blog.read.published?
+    = render 'unpublished', blog: blog
+  -else
+    = render 'published', blog: blog
